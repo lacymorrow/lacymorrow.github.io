@@ -216,8 +216,13 @@ p {
 	background: white;
 }
 #offcanvas-wrapper a {
-	padding: 1em 0;
+	padding: 0 0 1em 2em;
 	display: block;
+	transition: padding 0.4s ease-out;
+	-webkit-transition: padding 0.4s ease-out;
+}
+#offcanvas-wrapper a:hover {
+	padding: 0 0 1em 2.5;
 }
 #offcanvas-wrapper li:before {
 	width:5px;
