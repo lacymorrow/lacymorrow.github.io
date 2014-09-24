@@ -117,7 +117,7 @@
       $('#submitButton').fadeOut('fast',function() {
         $('#contact-loader').fadeIn('fast');
       });
-      $.post("javascripts/ajaxmail.php", $(this).serialize())
+      $.post("http://lacymorrow.com/javascripts/ajaxmail.php", $(this).serialize())
       .done(function(data) {
         if(data==1){
           $('#alert-boxes').prepend($('#alert-box-success').html());
