@@ -1,5 +1,3 @@
-/* Foundation was made by ZURB, an interaction design and design strategy firm in Campbell, CA */
-/* zurb.com */
 /* humanstxt.org */
 
 /* TEAM */
@@ -7,6 +5,6 @@
   Lacy Morrow -- Developer
 
 /* SITE */
-  Standards: HTML5, CSS3
-  Components: jQuery
-  Software: Sublime, Git, Less
+  Standards: HTML5, CSS3, PEP8, JSCS, CSSLint
+  Components: Meteor, Foundation, Stylus, jQuery
+  Software: Sublime, Git
