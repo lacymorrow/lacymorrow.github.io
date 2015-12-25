@@ -4110,7 +4110,8 @@ dialog::backdrop {
   -webkit-backface-visibility: hidden;
   position: relative;
   width: 100%;
-  overflow: hidden; }
+  overflow: hidden;
+  overflow-y: scroll; }
   .off-canvas-wrap.move-right, .off-canvas-wrap.move-left {
     min-height: 100%;
     -webkit-overflow-scrolling: touch; }
