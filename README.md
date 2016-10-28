@@ -11,7 +11,7 @@ Download or clone the repo. Using the terminal, `cd` into the directory and run 
 `grunt` will build the website and output all files to the `dist` directory.
 
 `grunt serve` will build the website and open the `dist` folder in the browser using the grunt-express plugin. It will watch and persist your session as you make changes and save source files using Livereload.
-
+ 
 #### Grunt Tasks
 
  * Assets have `git pull; npm install; grunt` run to build them and are copied to `dist/assets`.
