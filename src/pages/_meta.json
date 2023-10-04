@@ -1,0 +1,41 @@
+{
+  "index": {
+    "title": "Home",
+    "display": "hidden",
+    "theme": {
+      "breadcrumb": false,
+      "footer": false,
+      "sidebar": false,
+      "toc": false,
+      "pagination": false,
+      "layout": "raw"
+    }
+  },
+  "work": {
+    "title": "Work",
+    "type": "page"
+  },
+  "play": {
+    "title": "Play",
+    "type": "page"
+  },
+  "about": {
+    "title": "About",
+    "type": "page"
+  },
+  "fly5": {
+    "title": "Fly5 ↗",
+    "type": "page",
+    "href": "https://fly5.live",
+    "newWindow": true
+  },
+  "contact": {
+    "title": "Contact ↗",
+    "type": "page",
+    "newWindow": true,
+    "display": "hidden"
+  },
+  "sink": {
+    "display": "hidden"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "index": {
+    "title": "Play",
+    "display": "hidden"
+  },
+  "crossover": "CrossOver",
+  "casper": "Casper WP Theme",
+  "cinematic": "Cinematic",
+  "js": "JavaScript Libraries",
+  "react": "React Libraries",
+  "php": "PHP Libraries",
+  "python": "Python Libraries",
+  "flash": "Flash Applications",
+  "art": "Flash Art",
+  "xspf": "XSPF Jukebox",
+  "calculator": "TI Calculator Games"
+}

@@ -1,0 +1,51 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap');
+:root{
+	--primary-color:#99be2a;
+	--secondary-color:#3278bd;
+	--text-color:#201d1d;
+	--ff-open-sans:'Open Sans', sans-serif;
+}
+body {
+    font-family: var(--ff-open-sans);
+    font-size: 18px;
+    line-height: 29px; 
+    color: var(--text-color);
+    background: #ffffff;
+    overflow-x: hidden;
+    outline: none !important; 
+}
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td {
+	border: 0;
+	margin: 0;
+	outline: 0;
+	padding: 0;
+	vertical-align: baseline;
+}
+*{
+    outline: none !important;  
+}
+img{
+    vertical-align: middle;
+    max-width: 100%;
+}
+a,
+i {
+	border: none;
+}
+
+button {
+	padding: 0;
+}
+
+a {
+	color: var(--theme-color); 
+}
+
+button,a{
+	@include transition(all 0.25s);
+}
+.reset-ul{
+	padding: 0;
+	margin: 0;
+	list-style: none;
+}

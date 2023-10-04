@@ -1,0 +1,125 @@
+.nextra-nav-container {
+	display: none;
+}
+
+/*-----------------------------------*\
+  Animation Styles
+\*-----------------------------------*/
+
+.random * {
+	transition: all 0.2s ease-in-out;
+}
+
+.random:hover > svg {
+	transform: rotate(90deg);
+  color: #e600c0;
+}
+
+.color-transition {
+  color: #e600c0;
+  background-image: linear-gradient(92deg, #e600c0, #f590e4);
+  background-clip: text;
+  text-fill-color: transparent;
+  animation: hue 42s infinite linear;
+}
+
+.slide-in {
+  display: inline-block;
+  position: relative;
+}
+
+.slide-in:after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 6px;
+  bottom: 0;
+  left: 0;
+  background-image: linear-gradient(92deg, #e600c0, #f590e4);
+  transform-origin: bottom right;
+  transition: transform 0.25s ease-out;
+}
+
+.slide-in:hover:after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+.header-img:hover {
+  animation-name: tada;
+  animation-duration: 1s;
+  animation-fill-mode: both;
+}
+
+.header-img img {
+	border-radius: 50%;
+	border: 3px solid white;
+	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
+	animation: pulse 5s infinite ease-in-out,  hue 42s infinite linear;
+}
+
+.content a {
+	text-underline-position: under;
+	text-decoration-line: underline;
+	text-decoration-thickness: from-font;
+}
+
+.content a:hover {
+	text-decoration-line: none;
+	animation-duration: 2s;
+}
+
+.card {
+  font-family: -apple-system, BlinkMacSystemFont, 'Open Sans', sans-serif;
+  font-size: 3em;
+  font-weight: 800;
+  height: 4em;
+  width: 64em;
+  padding: 0.5em 1em;
+  border-radius: 0.25em;
+  display: table-cell;
+  vertical-align: middle;
+  letter-spacing: -2px;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+}
+
+.card .subtle {
+  color: #000;
+  font-size: 0.5em;
+  font-weight: 400;
+  letter-spacing: -1px;
+}
+
+.card i {
+  font-size: 3em;
+}
+
+.bg-0 {
+	color: #fff;
+	background: linear-gradient(110deg, #a60af3 40%, rgba(0, 0, 0, 0) 30%), radial-gradient(farthest-corner at 0% 0%, #7a00cc 70%, #c03fff 70%);
+}
+
+.bg-1 {
+	color: #000;
+	background: linear-gradient(70deg, #fff810  30%, rgba(0,0,0,0) 30%), linear-gradient(30deg, #63e89e 60%, #ff7ee3 60%);
+}
+
+.bg-2 {
+	color: #000;
+  background: linear-gradient(110deg, #fdcd3b 60%, #ffed4b 60%);
+}
+
+.bg-3 {
+  background: linear-gradient(70deg, #ff6464 40%, #5ac8fa 40%);
+}
+
+.bg-4 {
+	background: linear-gradient(-70deg, #fa7c30 30%, rgba(0, 0, 0, 0) 30%);
+  background-size: cover;
+  background-position: 50% 21%;
+  text-align: right;
+}
+.dark .bg-4 {
+	color: #fff;
+}

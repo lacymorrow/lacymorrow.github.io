@@ -2,9 +2,8 @@
 
 /* TEAM */
 
-  Lacy Morrow -- Developer
+  Lacy Morrow -- Creator
 
 /* SITE */
-  Standards: HTML5, CSS3, PEP8, JSCS, CSSLint
-  Components: Meteor, Foundation, Stylus, jQuery
-  Software: Sublime, Git
+  Standards: TailwindCSS, TS, React, NextJS
+  Components: ShadCN, RadixUI, Nextra, HeroIcons

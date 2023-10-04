@@ -1,0 +1,221 @@
+.section-values {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-template-rows: 1fr;
+  grid-row-gap: 0px;
+  grid-column-gap: 40px; 
+  place-items: start;
+  place-content: start;
+  width: 90vw;
+  min-height: 100vh;
+  margin: auto;
+}
+
+.value-left {
+  width: 90%;
+  position: sticky;
+  top: 25px;
+}
+
+.value-right {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.value-title {
+  max-width: 10ch;
+  color: rgb(var(--twlo-red));
+  font-family: 'TwilioSansDisplay-Regular', sans-serif;
+  font-weight: normal;
+  font-size: 6vmax;
+  line-height: 1;
+  margin-bottom: 1rem;
+}
+
+.value-title strong {
+  font-family: 'TwilioSansDisplay-Extrabold', sans-serif;
+}
+
+.value-sub-title {
+  font-size: 1.2vmax;
+  line-height: 1.6;
+}
+
+.value-card-header {
+  font-family: 'TwilioSansDisplay-Extrabold', sans-serif;
+  font-size: 2vmax;
+  max-width: 50ch;
+  line-height: 1.6;
+  color: rgb(var(--twlo-red));
+  text-align: center;
+margin-top: 1rem;
+margin-bottom: 2rem;
+}
+
+.outbound-links {
+  font-size: 1.1vmax;
+  margin-top: 2rem;
+}
+
+.outbound-links-title {
+  margin-bottom: 1rem;
+}
+
+.outbound-links ul {
+  list-style-type: none;
+}
+
+.outbound-links li {
+  margin-bottom: 0.5rem;
+}
+
+.outbound-links li::after {
+  content: '↗︎';
+  color: currentColor;
+  margin-left: 0.5ch;
+  width: min-content;
+}
+
+.outbound-links a {
+  color: rgb(var(--twlo-red));
+  text-decoration: none;
+}
+
+.overflow-visible {
+  overflow: visible !important;
+}
+
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+
+
+  counter-reset: section;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 1rem;
+  color: black;
+  margin-bottom: 45px;
+} 
+
+/* .cards > div {
+  flex: 0 0 45%;
+  min-height: 5em;
+}
+
+.cards > div:nth-of-type(2n) {
+  margin-top: 50px;
+} */
+
+.card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 1.5rem 2rem;
+  border-radius: 8px;
+  background-color: white;
+}
+
+.card.has-cursor-effect::before {
+  font-family: 'TwilioSansDisplay-Extrabold', sans-serif;
+  counter-increment: section;
+  content: "Principle #" counter(section) "";
+  color: rgb(var(--twlo-red));
+  margin-bottom: 20px;
+  letter-spacing: 1px;
+}
+
+.title-card {
+  display: grid;
+  align-items: center;
+  justify-content: start;
+  height: 100%;
+  color: white;
+  background-color: transparent;
+  background-color: rgb(var(--twlo-red));
+}
+
+.title-card .title {
+  font-family: 'TwilioSansDisplay-Extrabold', sans-serif;
+  font-weight: 900;
+  font-size: 3vmax;
+  line-height: 1;
+  max-width: 10ch;
+}
+
+.card-title {
+  font-family: 'TwilioSansDisplay-Extrabold', sans-serif;
+  font-size: 1.5vmax;
+  letter-spacing: 1px;
+  margin-bottom: 0.5rem;
+}
+
+.card-subtitle {
+  font-size: 0.9vmax;
+  line-height: 1.6;
+}
+
+.card-link {
+  color: rgb(var(--twlo-red));
+  font-weight: 700;
+}
+
+.value-venn {
+  width: calc(0.3*var(--venn-size));
+  height: calc(0.3*var(--venn-size));
+  position: relative;
+  position: sticky;
+}
+
+.value-venn-circle {
+  box-sizing: content-box;
+  width: calc(100% * 0.63);
+  height: calc(100% * 0.63);
+  border-radius: 100%;
+  border: 10px solid rgb(var(--twlo-red));
+}
+
+.value-venn-circle::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 100%;
+  background-image: radial-gradient(rgb(var(--twlo-red)) 30%, transparent 30%);
+  background-position: 6px 6px;
+  background-size: 16px 16px;
+  opacity: 0;
+  transition: opacity 300ms ease-in;
+}
+
+.value-venn-top-left {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 4;
+}
+
+.value-venn-top-right {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 3;
+}
+
+.value-venn-bottom-left {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: 2;
+}
+
+.value-venn-bottom-right {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  z-index: 1;
+}

@@ -1,0 +1,59 @@
+.section-ctas {
+  padding: 5%;
+  background-color: rgb(var(--twlo-red));
+  color: #222;
+}
+
+.ctas-title {
+  font-family: 'TwilioSansDisplay-Extrabold', sans-serif;
+  font-weight: 900;
+  --font-size: 8vmax;
+  font-size: var(--font-size);
+  margin-bottom: 3rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.slide-up-reveal {
+  width: 100%;
+  min-height: calc(var(--font-size) + 0.8vw);
+  overflow: hidden;
+  line-height: 1;
+  margin-bottom: -20px;
+}
+
+.slide-up-reveal span {
+  display: block;
+}
+
+.section-ctas p {
+  font-size: 2vmax;
+  max-width: 50ch;
+  margin-bottom: 5rem;
+}
+
+.section-ctas a {
+  background-color: white;
+  text-decoration: none;
+  padding: 1ex 2ch;
+  border-radius: 8px;
+  margin-right: 1rem;
+  color: inherit;
+  font-size: 2vmax;
+  transition-property: color, background-color;
+  transition-duration: 200ms;
+}
+
+.section-ctas a::after {
+  content: '↗︎';
+  color: currentColor;
+  margin-left: 1ch;
+  width: min-content;
+  vertical-align: baseline;
+}
+
+.section-ctas a:hover {
+  background-color: #222;
+  color: white;
+}

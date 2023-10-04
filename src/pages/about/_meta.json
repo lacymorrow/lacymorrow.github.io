@@ -1,0 +1,15 @@
+{
+  "index": "About Lacy",
+  "contact": {
+    "title": "Contact Me",
+    "theme": {
+      "breadcrumb": true,
+      "footer": true,
+      "sidebar": true,
+      "toc": false,
+      "pagination": false
+    }
+  },
+  "mentions": "Mentions",
+  "archive": "Archive"
+}

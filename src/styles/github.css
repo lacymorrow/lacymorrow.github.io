@@ -1,0 +1,14 @@
+.markdown-body,
+.markdown-body img {
+	background-color: transparent !important;
+}
+
+.markdown-body ul {
+	list-style: disc;
+}
+
+.markdown-body p a,
+.markdown-body p img
+{
+	display: inline-block;
+}

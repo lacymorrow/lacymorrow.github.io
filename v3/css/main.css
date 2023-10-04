@@ -1,0 +1,253 @@
+/*-----------------------------------*\
+  Font Imports
+\*-----------------------------------*/
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400italic,400,700,300);
+@import url(https://fonts.googleapis.com/css?family=Lato:400,700);
+
+/*-----------------------------------*\
+  $ANIMATIONS
+\*-----------------------------------*/
+
+
+.animated {
+	-webkit-animation-duration: 1s;
+	animation-duration: 1s;
+	-webkit-animation-fill-mode: both;
+	animation-fill-mode: both;
+}
+
+.animated.hinge {
+	-webkit-animation-duration: 2s;
+	animation-duration: 2s;
+}
+
+@-webkit-keyframes hue {
+  from {
+    -webkit-filter: hue-rotate(0deg);
+  }
+
+  to {
+    -webkit-filter: hue-rotate(-360deg);
+  }
+}
+
+@-webkit-keyframes tada {
+	0% {
+		-webkit-transform: scale(1);
+	}
+
+	10%, 20% {
+		-webkit-transform: scale(0.9) rotate(-3deg);
+	}
+
+	30%, 50%, 70%, 90% {
+		-webkit-transform: scale(1.1) rotate(3deg);
+	}
+
+	40%, 60%, 80% {
+		-webkit-transform: scale(1.1) rotate(-3deg);
+	}
+
+	100% {
+		-webkit-transform: scale(1) rotate(0);
+	}
+}
+
+@keyframes tada {
+	0% {
+		-webkit-transform: scale(1);
+		transform: scale(1);
+	}
+
+	10%, 20% {
+		-webkit-transform: scale(0.9) rotate(-3deg);
+		transform: scale(0.9) rotate(-3deg);
+	}
+
+	30%, 50%, 70%, 90% {
+		-webkit-transform: scale(1.1) rotate(3deg);
+		transform: scale(1.1) rotate(3deg);
+	}
+
+	40%, 60%, 80% {
+		-webkit-transform: scale(1.1) rotate(-3deg);
+		transform: scale(1.1) rotate(-3deg);
+	}
+
+	100% {
+		-webkit-transform: scale(1) rotate(0);
+		transform: scale(1) rotate(0);
+	}
+}
+
+@-webkit-keyframes pulse {
+	0% {
+		box-shadow: 0 0 5px rgba(243,86,38, 0.1);
+	}
+
+	50% {
+		box-shadow: 0 0 60px rgba(243,86,38, 0.8);
+	}
+
+	100% {
+		box-shadow: 0 0 5px rgba(243,86,38, 0.1);
+	}
+}
+
+
+/*-----------------------------------*\
+  Animation Styles
+\*-----------------------------------*/
+
+.color-transition {
+  	color: #f35626;
+	background-image: -webkit-linear-gradient(92deg,#f35626,#feab3a);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	-webkit-animation: hue 45s infinite linear;
+}
+
+#header-img:hover {
+	-webkit-animation-name: tada;
+	animation-name: tada;
+	-webkit-animation-duration: 1s;
+	animation-duration: 1s;
+	-webkit-animation-fill-mode: both;
+	animation-fill-mode: both;
+}
+
+
+/*-----------------------------------*\
+  Type
+\*-----------------------------------*/
+
+body, h1, p {
+	font-family: 'Open Sans', Lato, 'Helvetica Neue';
+	-webkit-font-smoothing: antialiased;
+	-webkit-backface-visibility: hidden;
+}
+h1 {
+	font-size: 4em;
+	font-weight: 700;
+	margin-top: 0;
+}
+p {
+	font-size: 1.4em;
+	text-align: left;
+}
+
+
+/*-----------------------------------*\
+  Resets
+\*-----------------------------------*/
+
+.off-canvas-wrap,
+.inner-wrap {
+	height: 100%;
+}
+
+
+/*-----------------------------------*\
+  Main
+\*-----------------------------------*/
+
+#main-wrapper {
+	margin: 0 auto;
+	text-align: center;
+	height: 100%;
+	margin-top: 2em;
+}
+
+
+#header-img img{
+	border-radius: 50%;
+	border: 3px solid white;
+	box-shadow: 0 1px 1px rgba(0,0,0,0.3);
+	-webkit-animation: pulse 5s infinite ease-in-out;
+}
+
+#social-links-inline {
+	text-align: center;
+	margin: 0 auto;
+}
+#social-links-inline > li {
+	display: inline-block;
+	float: none;
+	font-size: 2em;
+}
+#social-links-inline > li a {
+	color: #f35626;
+	transition: color 0.4s ease-out, text-decoration 0.4s ease-out, transform 0.4s ease-out;
+	-webkit-transition: color 0.4s ease-out, text-decoration 0.4s ease-out, -webkit-transform 0.4s ease-out;
+}
+#social-links-inline > li a:hover,
+#social-links-inline > li a:active,
+#social-links-inline > li a:focus {
+  color: #f35626;
+  text-decoration: none;
+  transform: rotate(5deg);
+  -webkit-transform: rotate(5deg);
+}
+#social-links-inline > li:nth-of-type(3) a:hover,
+#social-links-inline > li:nth-of-type(3) a:active,
+#social-links-inline > li:nth-of-type(3) a:focus {
+  color: #f35626;
+  text-decoration: none;
+  transform: rotate(-5deg);
+  -webkit-transform: rotate(-5deg);
+}
+
+
+/*-----------------------------------*\
+  Off Canvas Sidebar
+\*-----------------------------------*/
+
+#offcanvas-wrapper{
+	background: white;
+	margin: 0;
+}
+#offcanvas-wrapper li,
+#offcanvas-wrapper .left-submenu li
+ {
+	padding: 0;
+	margin: 0;
+	margin-left: 1em;
+	list-style: none;
+	background: white;
+}
+#offcanvas-wrapper a {
+	padding: 0 0 1em 2em;
+	display: block;
+	transition: padding 0.4s ease-out;
+	-webkit-transition: padding 0.4s ease-out;
+}
+#offcanvas-wrapper a:hover {
+	padding: 0 0 1em 2.5;
+}
+#offcanvas-wrapper li:before {
+	width:5px;
+	height: 100%;
+	display: inline-block;
+	content: ' ';
+	background: blue;
+}
+#offcanvas-wrapper .left-submenu {
+}
+#offcanvas-wrapper .left-submenu,
+#offcanvas-wrapper .left-submenu .back > a {
+	border-top: none;
+	background: white;
+}
+
+
+
+
+/*-----------------------------------*\
+  Media Queries
+\*-----------------------------------*/
+
+@media only screen and (min-width: 40.063em) {
+	p {
+		text-align: justify;
+	}
+}
