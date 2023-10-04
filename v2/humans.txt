@@ -1,0 +1,20 @@
+# humanstxt.org/
+# The humans responsible & technology colophon
+
+# TEAM
+
+    Lacy Morrow -- Developer
+
+# THANKS
+	
+    http://foundation.zurb.com
+	http://www.2meter3.de/code/hoverFlow/
+	http://isotope.metafizzy.co
+	http://orangebox.davidpaulhamilton.net
+
+# TECHNOLOGY COLOPHON
+
+    HTML5, CSS3, PHP
+    jQuery, Modernizr
+    Foundation, Coda, 
+    Illustrator, Photoshop

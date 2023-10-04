@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gallery>
+<title>Gallery :: by lacy morrow</title>
+<audio>http://www.lacymorrow.com/music/Better%20Together.mp3</audio>
+<autoplay>1</autoplay>
+<burns>1</burns>
+<caption>Gallery Demo</caption>
+<crop>0</crop>
+<controls>1</controls>
+<duration>8</duration>
+<link>http://lacymorrow.com/</link>
+<list>1</list>
+<loop>1</loop>
+<shuffle>1</shuffle>
+<transition>random</transition>
+<volume>80</volume>
+<watermark>http://lacymorrow.com/projects/gallery/images/icons.png</watermark>
+<images>
+<flickr>
+</flickr>
+</images>
+</gallery>

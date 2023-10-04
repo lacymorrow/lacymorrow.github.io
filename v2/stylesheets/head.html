@@ -1,0 +1,31 @@
+
+    <!-- IE Fix for HTML5 Tags -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+      <script>
+          document.createElement('figure');
+          document.createElement('figcaption');
+      </script>
+    <![endif]-->
+
+    <script>
+  		// Wait for window load
+  		$(window).load(function() {
+  		  //alert('loaded');
+  			// Animate loader off screen
+  			/*
+  			$("#loader").animate({
+  				top: -200
+  			}, 1500);
+		    */
+		    oB.settings.imageBorderWidth = 1;
+        oB.settings.fadeControls = false;
+        oB.settings.fadeCaption = true;
+        oB.settings.addThis = false;
+        //oB.settings.contentMinWidth	= 480;
+        //oB.settings.orangeControls = true;
+  			//oB.settings.showNav = true;
+  			oB.settings.contentBorderWidth = 0;
+  		});
+  	</script>
+  	

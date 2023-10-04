@@ -1,0 +1,65 @@
+.section-twilion {
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr;
+  grid-column-gap: 0px 40px;
+  grid-row-gap: 0px;
+  position: relative;
+  min-height: 100vh;
+}
+
+.twilion-image {
+  width: 100%;
+}
+
+.twilion-image-placeholder {
+  position: relative;
+  width: 70%;
+}
+
+.twilion-image-placeholder img {
+  height: 70%;
+  object-fit: cover;
+}
+
+.twilion-image-placeholder::before {
+  content: '';
+  display: block;
+  position: absolute;
+  inset: 0;
+  background-color: rgba(var(--twlo-red), 0.2);
+  /* mix-blend-mode: multiply; */
+}
+
+.venn-image {
+  margin-bottom: 60px;
+}
+
+
+.twilion-header .title {
+  color: rgb(var(--twlo-black));
+  font-family: 'TwilioSansDisplay-Extrabold', sans-serif;
+  font-size:5vw;
+  line-height: 1; 
+  margin-bottom: 2rem;
+}
+
+.twilion-header .title strong {
+  font-family: 'TwilioSansDisplay-Extrabold', sans-serif;
+}
+
+.twilion-header .subtitle {
+  font-size: 2vmax;
+  margin-bottom: 2rem;
+  color: rgb(var(--twlo-black));
+}
+
+.twilion-header .description {
+  font-size: 1.5vmax;
+  line-height: 1.6;
+  color: rgb(var(--twlo-black));
+}
+
+.user-text-info .twilion-header{
+  margin-top: 44px;
+  padding-bottom: 30px;
+}

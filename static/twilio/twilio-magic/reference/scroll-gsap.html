@@ -1,0 +1,422 @@
+<html>
+
+<head>
+  <title>GSAP ScrollTrigger</title>
+</head>
+
+<body class="theme">
+  <section class="section-magic-venn">
+    <div class="magic-venn">
+      <div class="magic-venn-circle magic-venn-top-left is-dotted"></div>
+      <div class="magic-venn-circle magic-venn-top-right is-dotted"></div>
+      <div class="magic-venn-circle magic-venn-bottom-left is-dotted"></div>
+      <div class="magic-venn-circle magic-venn-bottom-right is-dotted"></div>
+    </div>
+    <header class="header">
+      <h1 class="title">Twilio Magic 2.0</h1>
+      <p class="sub-title">The Twilio Magic is at the core of our operating system—it defines who we are, and guides how we work together. It’s a distillation of the values and principles that we stand for as a company.</p>
+    </header>
+  </section>
+    
+  <section class="cards">
+    <div class="card"></div>
+    <div class="card"></div>
+    <div class="card"></div>
+    <div class="card"></div>
+  </section>  
+
+  <section class="section-3">
+    This is another section
+  </section>
+
+  <nav class="menu has-cursor-effect">
+    <a class="menu-link" href="#" data-hover="About">About</a>
+  </nav>
+
+  <div class="cursor">
+    <div class="cursor-inner">
+      <div class="cursor-shape"></div>
+    </div>
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.2/ScrollTrigger.min.js"></script>
+</body>
+
+</html>
+
+<script>
+  // ================================
+  // GSAP ScrollTrigger
+  // ================================
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  const vennTimeline = gsap.timeline();  
+  vennTimeline.to(".magic-venn-top-left", { scale: 10, rotation: 50, autoAlpha: 0, ease: "back.in(0.5)", duration: 20 }, "-=15")
+              .to(".magic-venn-top-right", { scale: 6, rotation: 70, autoAlpha: 0, ease: "back.in(0.5)", duration: 20 }, "-=15")
+              .fromTo(".theme", { backgroundColor: "#FEF5EE", color: "white" }, { color: "white", backgroundColor: "#06033A", duration: 10 }, "<")
+              .fromTo(".menu-link", { color: "black" }, { color: "white", duration: 1 }, "<")
+              .from(".header", { scale: 0, rotation: -20, autoAlpha: 0, ease: "back.inOut(1.5)", duration: 15 }, "<")
+              .to(".magic-venn-bottom-left", { scale: 2, rotation: 110, x: "-45vw", y: "-40vh", ease: "back.inOut(1.5)", duration: 20 }, "-=15")
+              .to(".magic-venn-bottom-right", { scale: 2, rotation: 130, x: "45vw", y: "40vh", ease: "back.inOut(1.5)", duration: 20 }, "-=15")
+
+  ScrollTrigger.defaults({ markers: true });
+
+  ScrollTrigger.create({
+    id: "venn",
+    trigger: ".section-magic-venn",
+    animation: vennTimeline,
+    pin: true,
+    scrub: 0.5,
+  });
+
+  const circleTimeline = gsap.timeline();  
+  circleTimeline.to(".card", { stagger: 2, x: "50vw", duration: 20 })
+                .to(".card", { stagger: 2, x: "-20vw", duration: 20 })
+                .to(".card", { stagger: 2, x: "0", duration: 20 })
+
+  ScrollTrigger.create({
+    id: 'cards',
+    trigger: ".cards",
+    pin: true,
+    animation: circleTimeline,
+    scrub: 0.5,
+  })
+  
+  // ================================
+  // Custom cursor follow interaction
+  // ================================
+
+  document.addEventListener('DOMContentLoaded', function (event) {
+
+    let customCursorFollow = new mouseFollow('.cursor', '.cursor-inner', '.cursor-shape');
+
+    const loop = () => {
+      let animation = window.requestAnimationFrame(loop);
+      customCursorFollow.follow();
+    }
+    loop();
+  });
+
+  const calcEasing = (ex, current, easing) => {
+    return ex + (current - ex) * easing;
+  }
+
+  const calcDis = (x, _x) => {
+    return Math.sqrt(Math.pow(x, 2) + Math.pow(_x, 2));
+  }
+
+  class mouseFollow {
+    constructor(cursorElem, cursorInner, cursorShape) {
+      this.elem = document.querySelector(cursorElem);
+      this.elemInner = document.querySelector(cursorInner);
+      this.elemShape = document.querySelector(cursorShape);
+      this.hoverEffectElems = document.querySelectorAll('.has-cursor-effect');
+      this.init();
+      this.event();
+    }
+
+    init() {
+      let harlfWidth = { x: window.innerWidth >> 1, y: window.innerHeight >> 1 }
+      this.mousePos = { x: harlfWidth.x, y: harlfWidth.y }
+      this.exmousePos = { x: harlfWidth.x, y: harlfWidth.y }
+      this.move = { x: harlfWidth.x, y: harlfWidth.y };
+    }
+
+    event() {
+      window.addEventListener('mousemove', (e) => this.update(e));
+      window.addEventListener('mouseout', (e) => { this.outmouse(e); }, false);
+
+      // window.addEventListener('mousedown', (e) => this.whileMouseDown(e));
+      // window.addEventListener('mouseup', (e) => this.whileMouseDown(e));
+
+      // Make cursor bigger when inside the dot grid canvas
+      this.hoverEffectElems.forEach(elem => {
+        elem.addEventListener('mouseenter', (e) => this.elem.classList.add('is-active'));
+        elem.addEventListener('mouseleave', (e) => this.elem.classList.remove('is-active'));
+      });
+    }
+
+    update(e) {
+      this.mousePos = { x: e.clientX, y: e.clientY };
+      this.elem.classList.remove('is-hidden');
+    }
+
+    outmouse(e) {
+      this.elem.classList.add('is-hidden');
+
+      // return cursor dot to center of viewport
+      // this.mousePos = {x: window.innerWidth >> 1 , y: window.innerHeight >> 1}
+    }
+
+    // // Add class while mouse is being held down
+    // whileMouseDown() {
+    //   this.elemShape.classList.toggle('is-being-clicked');
+    // }
+
+    calcEasing(ex, current, easing) {
+      return ex + (current - ex) * easing;
+    }
+
+    calc() {
+      this.move.x = this.calcEasing(this.exmousePos.x, this.mousePos.x, 0.2);
+      this.move.y = this.calcEasing(this.exmousePos.y, this.mousePos.y, 0.2);
+      this.exmousePos.x = this.move.x;
+      this.exmousePos.y = this.move.y;
+
+      let distance = {
+        x: Math.abs(this.mousePos.x - this.exmousePos.x),
+        y: Math.abs(this.mousePos.y - this.exmousePos.y),
+      }
+
+      let dist = Math.sqrt(Math.pow(distance.x, 2) + Math.pow(distance.y, 2));
+
+      let baseScale = Math.round(dist / (window.innerWidth / 6) * 100) / 100 + 1;
+      baseScale = Math.min(baseScale, 1.5);
+
+      this.scale = {
+        x: baseScale,
+        y: 1 - Math.abs(1 - baseScale)
+      }
+
+      if (Math.abs(this.mousePos.x - this.move.x) < 0.0005) {
+        this.move.x = this.mousePos.x;
+        this.move.y = this.mousePos.y;
+      }
+
+      // Rotate dot in direction of the cursor
+      let distanceCircleToMouse = {
+        x: Math.round((this.mousePos.x - this.move.x) * 100) / 500,
+        y: Math.round((this.mousePos.y - this.move.y) * 100) / 500
+      }
+
+      let radian = Math.atan2(distanceCircleToMouse.y, distanceCircleToMouse.x);
+      this.angle = ~~(radian * (180 / Math.PI));
+    }
+
+    follow() {
+      this.calc();
+      this.elemInner.style.transform = `translate3d( ${this.move.x}px ,${this.move.y}px , 0)`;
+      this.elemShape.style.transform = `rotate(${this.angle}deg) scale(${this.scale.x}, ${this.scale.y})`;
+    }
+  }
+</script>
+
+<style>
+  :root {
+    --twlo-red: 242, 47, 70;
+    --twlo-blue-90: 3, 11, 93;
+    --twlo-blue-100: 6, 3, 58;
+    --twlo-blue-20: 204, 228, 255;
+    --twlo-orange-10: 254, 245, 238;
+  }
+
+  * {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    color: white;
+    font-family: 'Twilio Sans Text', sans-serif;
+    background-color: rgb(var(--twlo-orange-10));
+  }
+
+  section {
+    width: 100%;
+    height: 100vh;
+    display: grid;
+    place-items: center;
+  }
+
+  .section-3 {
+    background-color: rgb(var(--twlo-red));
+  }
+
+  .dot {
+    display: block;
+    background-color: rgb(var(--twlo-red));
+    border-radius: 100%;
+    height: 20px;
+    width: 20px;
+  }
+
+  .cards {
+    height: 150vh;
+  }
+
+  .card {
+    display: block;
+    width: 400px;
+    height: 250px;
+    background-color: white;
+    border-radius: 16px;
+  }
+
+  .section-header {
+    background-color: rgb(var(--twlo-blue-100));
+    z-index: 3;
+  }
+
+  .header {
+    position: fixed;
+  }
+  
+  .title {
+    font-family: 'Twilio Sans Display', sans-serif;
+    font-size: 6vmax;
+    font-weight: 900;
+    margin-bottom: 1rem;
+  }
+
+  .sub-title {
+    font-size: 2vmax;
+    max-width: 50ch;
+    line-height: 1.6;
+  }
+
+  /* ==================== */
+  /* Magic Venn */
+  /* ==================== */
+
+  @keyframes show {
+    0% { opacity: 0; }
+  }
+
+  .magic-venn {
+    width: 400px;
+    height: 400px;
+    position: relative;
+    animation: show 1s ease-in backwards;
+  }
+
+  .magic-venn-circle {
+    box-sizing: content-box;
+    width: 252px;
+    height: 252px;
+    border-radius: 100%;
+    border: 10px solid rgba(var(--twlo-red), 1);
+    background-color: rgba(var(--twlo-red), 0.3);
+  }
+  
+  .magic-venn-circle.is-dotted::after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 100%;
+    border-radius: 100%;
+    background-image: radial-gradient(rgb(var(--twlo-red)) 30%, transparent 30%);
+    background-position: 6px 6px;
+    background-size: 16px 16px;
+  }
+
+  .magic-venn-top-left {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  .magic-venn-top-right {
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+
+  .magic-venn-bottom-left {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+  }
+
+  .magic-venn-bottom-right {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+  }
+
+  .menu {
+    position: fixed;
+    top: 3rem;
+    right: 3rem;
+    color: black;
+    cursor: pointer;
+    z-index: 10;
+  }
+  
+  /* ==================== */
+  /* Menu */
+  /* ==================== */
+
+  .menu-link {
+    position: relative;
+    display: block;
+    color: inherit;
+    text-decoration: none;
+    font-size: 1.5rem;
+    line-height: 1;
+  }
+
+  .menu-link::before,
+  .menu-link::after {
+    color: rgb(var(--twlo-red));
+    content: attr(data-hover);
+    display: inline-block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    transition: clip-path 1s cubic-bezier(0.19, 1, 0.22, 1), color 200ms ease-out;
+    clip-path: polygon(0% 0%, 0% 0%, 0% 100%, 0% 100%);
+  }
+
+  .menu-link:hover::before,
+  .menu-link:hover::after {
+    transform: translate(0px, 0px);
+    clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+  }
+
+  /* ==================== */
+  /* Cursor */
+  /* ==================== */
+
+  .cursor {
+    position: fixed;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: 999999;
+    transform-origin: 50%;
+    transform: translate3d(-50%, -50%, 0);
+    animation: show 5s ease-in backwards;
+  }
+
+  .cursor-shape {
+    z-index: 999999;
+    display: block;
+    width: 20px;
+    height: 20px;
+    border-radius: 100%;
+    background-color: rgb(var(--twlo-red));
+    transition-property: width, height, background-color;
+    transition-duration: 300ms;
+  }
+  
+  .cursor.is-active .cursor-shape {
+    transition-timing-function: cubic-bezier(0.5, -1, 0.3, 1.8);
+    width: 60px;
+    height: 60px;
+    background-color: transparent;
+    border: 2px solid rgb(var(--twlo-red));
+    opacity: 0.3;
+  }
+
+  .cursor.is-hidden .cursor-shape {
+    transition-timing-function: linear;
+    transition-duration: 100ms;
+    width: 0;
+    height: 0;
+  }
+</style>

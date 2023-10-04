@@ -1,0 +1,11 @@
+{
+  "name": "twilio-magic-prototype",
+  "version": "1.0.0",
+  "description": "",
+  "main": "browser-sync.js",
+  "scripts": {
+    "test": "yarn test"
+  },
+  "author": "Lacy Morrow <me@lacymorrow.com> (http://lacymorrow.com/)",
+  "license": "MIT"
+}
