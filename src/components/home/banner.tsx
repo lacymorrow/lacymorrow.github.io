@@ -1,6 +1,5 @@
 import "@/styles/home.css";
 import { UpdateIcon } from "@radix-ui/react-icons";
-import Image from "next/image";
 import { useState } from "react";
 const Banner = () => {
   const [index, setIndex] = useState(2);
@@ -18,7 +17,7 @@ const Banner = () => {
           href="https://github.com/lacymorrow"
           className="animated header-img tada mx-auto my-4 inline-block"
         >
-          <Image
+          <img
             src="https://s.gravatar.com/avatar/736b40590816c014f11aefb0072ce82c?s=300"
             width="150"
             height="150"
@@ -29,7 +28,7 @@ const Banner = () => {
         <div className="p-6 leading-relaxed">
           <div className="content text-4xl font-bold">
             <p>
-              I'm{" "}
+              I&apos;m{" "}
               <span className="color-transition text-7xl font-bold">
                 Lacy Morrow
               </span>

@@ -1,10 +1,16 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+	// For Static Site Generation
+	output: 'export',
+
 	// cors: {
   //   origin: "*",
   // },
-	experimental:{ serverActions:true, },
+	// experimental: { serverActions:true },
+
 	images: {
+		// For Static Site Generation
+		unoptimized: true,
     remotePatterns: [
       {
         protocol: 'https',

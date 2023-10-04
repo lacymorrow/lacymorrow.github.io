@@ -104,7 +104,7 @@ const ContactForm = () => {
     <div className="my-6">
       <form
         onSubmit={handleSubmit}
-        action="https://phpstack-1011481-3573429.cloudwaysapps.com/io.php"
+        // action="https://phpstack-1011481-3573429.cloudwaysapps.com/io.php"
       >
         <Card>
           <CardHeader>
