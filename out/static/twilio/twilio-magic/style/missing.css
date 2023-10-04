@@ -1,0 +1,185 @@
+@keyframes show {
+  0% { opacity: 0; }
+}
+
+.section-missing {
+  display: grid;
+  grid-template-columns: repeat(2, 50%);
+  grid-template-rows: 1fr;
+  grid-column-gap: 40px;
+  grid-row-gap: 0px;
+  padding: 2rem;
+  width: 100%;
+  height: 100vh;
+  display: grid;
+  place-items: center;
+  animation: show 1s ease-in backwards;
+  --venn-size: 30vw;
+}
+  
+.missing-left { 
+  grid-area: 1 / 1 / 2 / 2; 
+  padding: 10%;
+}
+
+.missing-right { 
+  grid-area: 1 / 2 / 2 / 3; 
+  display: flex;
+  flex-direction: column;
+}
+
+.missing-title {
+  color: rgb(var(--twlo-red));
+  font-family: 'TwilioSansDisplay-Extrabold', sans-serif;
+  font-size: 6vmax;
+  /* Negative text indent to optically left-align the capital T */
+  /* text-indent: -1rem; */
+}
+
+.missing-sub-title {
+  font-size: 2vmax;
+  max-width: 50ch;
+  line-height: 1.6;
+  color: black;
+}
+
+.missing-question-title {
+  font-family: 'TwilioSansDisplay-Extrabold', sans-serif;
+  font-size: 3vmax;
+  /* Negative text indent to optically left-align the capital T */
+  /* text-indent: -1rem; */
+}
+
+.missing-question-title span {
+  color: rgb(var(--twlo-red));
+}
+
+/* ==================== */
+/* Magic Venn */
+/* ==================== */
+
+.missing-venn {
+  width: var(--venn-size);
+  height: var(--venn-size);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.missing-venn-circle {
+  box-sizing: content-box;
+  width: calc(var(--venn-size) * 0.63);
+  height: calc(var(--venn-size) * 0.63);
+  border-radius: 100%;
+  border: 10px solid rgb(var(--twlo-blue-60));
+}
+
+.missing-venn-circle::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 100%;
+  background-image: radial-gradient(rgb(var(--twlo-blue-60)) 30%, transparent 30%);
+  background-position: 6px 6px;
+  background-size: 16px 16px;
+  opacity: 0;
+  transition: opacity 300ms ease-in;
+}
+
+:not(.has-no-hover).missing-venn-circle:hover::after,
+.missing-venn-circle.is-dotted::after {
+  opacity: 0.25;
+}
+
+.missing-link {
+  z-index: 2;
+  color: inherit;
+  text-align: center;
+  font-size: calc(var(--venn-size) * 0.04);
+  margin-top: 2rem;
+  text-decoration: none;
+}
+
+.missing-venn-circle .missing-link {
+  margin-top: 0;
+}
+
+.missing-venn .missing-link {
+  position: absolute;
+}
+
+.missing-venn .missing-link strong {
+  display: block;
+  font-weight: 900;
+}
+
+.missing-venn-top-left {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 4;
+}
+
+.missing-venn-top-left .missing-link {
+  top: 20%;
+  left: 20%;
+}
+
+.missing-venn-top-right {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 3;
+}
+
+.missing-venn-top-right .missing-link {
+  top: 20%;
+  right: 20%;
+}
+
+.missing-venn-bottom-left {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: 2;
+}
+
+.missing-venn-bottom-left .missing-link {
+  bottom: 20%;
+  left: 20%;
+}
+
+.missing-venn-bottom-right {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  z-index: 1;
+}
+
+.missing-venn-bottom-right .missing-link {
+  bottom: 20%;
+  right: 20%;
+}
+
+.missing-venn-parts {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  width: 30%;
+  height: 30%;
+}
+
+.missing-venn-image {
+  position: absolute;
+  opacity: 0;
+  width: 100%;
+}
+
+.js-missing-venn-0 {
+  width: 75%;
+}

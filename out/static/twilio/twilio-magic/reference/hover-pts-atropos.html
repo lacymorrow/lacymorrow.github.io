@@ -1,0 +1,339 @@
+<html>
+
+<head>
+  <title>Twilio Magic 2.0</title>
+  <script src="https://unpkg.com/pts@0.10.9/dist/pts.min.js"></script>
+  <script src="https://unpkg.com/atropos@1.0.2/atropos.min.js"></script>
+  <link rel="stylesheet" href="https://unpkg.com/atropos@1.0.2/atropos.min.css">
+</head>
+
+<body>
+
+  <main class="atropos">
+    <div class="atropos-scale">
+      <div class="atropos-rotate">
+        <div class="atropos-inner">
+          <h1 data-atropos-offset="10">Twilio Magic 2.0</h1>
+          <div class="magic-venn" data-atropos-opacity="0.3;1">
+            <div class="magic-venn-inner">
+              <div class="magic-venn-circle magic-venn-top-left" data-atropos-offset="5"></div>
+              <div class="magic-venn-circle magic-venn-top-right" data-atropos-offset="-10"></div>
+              <div class="magic-venn-circle magic-venn-bottom-left" data-atropos-offset="-20"></div>
+              <div class="magic-venn-circle magic-venn-bottom-right" data-atropos-offset="10"></div>
+            </div>
+          </div>
+          <div class="dot-grid has-cursor-effect" id="pt">
+          </div>
+        </div> <!-- atropos-inner (required) -->
+      </div> <!-- atropos-rotate (required) -->
+    </div> <!-- atropos-scale (required) -->
+  </main> <!-- atropos (required)-->
+
+  <div class="cursor">
+    <div class="cursor-inner">
+      <div class="cursor-shape"></div>
+    </div>
+  </div>
+
+</body>
+
+</html>
+
+<script>
+  // ================================
+  // pts.js used for dot grid canvas
+  // ================================
+
+  Pts.namespace(window);
+  var space = new CanvasSpace("#pt");
+  space.setup({ bgcolor: "#030B5D" });
+  var form = space.getForm();
+  var pts = [];
+
+  space.add({
+    start: (bound) => { 
+      pts = Create.gridPts(space.innerBound, 30, 30)
+    },
+    animate: (time, ftime) => {
+      let r = 180
+      let range = Circle.fromCenter(space.pointer, r);
+      // check if each point is within circle's range
+      for (let i = 0, len = pts.length; i < len; i++) {
+        if (Circle.withinBound(range, pts[i])) {
+          // calculate circle size
+          let dist = (r - pts[i].$subtract(space.pointer).magnitude()) / r + 0.1;
+          form.fillOnly("#fff").point(pts[i], dist * 6, "circle");
+        } else {
+          form.fillOnly("#fff").point(pts[i], 0.5);
+        }
+      }
+    }
+  })
+
+  space.bindMouse().play();
+
+  // ================================
+  // Atropos.js used for parallax mouse interaction
+  // ================================
+
+  const myAtropos = Atropos({
+    el: '.atropos',
+    activeOffset: 0,
+    // rotateXMax: 10,
+    // rotateYMax: 10,
+    duration: 750
+  });
+
+  // ================================
+  // Custom cursor follow interaction
+  // ================================
+
+  document.addEventListener('DOMContentLoaded', function (event) {
+
+    let customCursorFollow = new mouseFollow('.cursor', '.cursor-inner', '.cursor-shape');
+
+    const loop = () => {
+      let animation = window.requestAnimationFrame(loop);
+      customCursorFollow.follow();
+    }
+    loop();
+  });
+
+  const calcEasing = (ex, current, easing) => {
+    return ex + (current - ex) * easing;
+  }
+
+  const calcDis = (x, _x) => {
+    return Math.sqrt(Math.pow(x, 2) + Math.pow(_x, 2));
+  }
+
+  class mouseFollow {
+    constructor(cursorElem, cursorInner, cursorShape) {
+      this.elem = document.querySelector(cursorElem);
+      this.elemInner = document.querySelector(cursorInner);
+      this.elemShape = document.querySelector(cursorShape);
+      this.init();
+      this.event();
+    }
+
+    init() {
+      let harlfWidth = { x: window.innerWidth >> 1, y: window.innerHeight >> 1 }
+      this.mousePos = { x: harlfWidth.x, y: harlfWidth.y }
+      this.exmousePos = { x: harlfWidth.x, y: harlfWidth.y }
+      this.move = { x: harlfWidth.x, y: harlfWidth.y };
+    }
+
+    event() {
+      window.addEventListener('mousemove', (e) => this.update(e));
+      window.addEventListener('mouseout', (e) => { this.outmouse(e); }, false);
+
+      // window.addEventListener('mousedown', (e) => this.whileMouseDown(e));
+      // window.addEventListener('mouseup', (e) => this.whileMouseDown(e));
+
+      // Make cursor bigger when inside the dot grid canvas
+      const cursorEffectElems = document.querySelectorAll('.has-cursor-effect');
+      cursorEffectElems.forEach(elem => {
+        elem.addEventListener('mouseenter', (e) => this.elemShape.classList.add('is-active'));
+        elem.addEventListener('mouseleave', (e) => this.elemShape.classList.remove('is-active'));
+      });
+    }
+
+    update(e) {
+      this.mousePos = { x: e.clientX, y: e.clientY };
+      this.elemShape.classList.remove('is-hidden');
+    }
+
+    outmouse(e) {
+      // this.mousePos = {x: window.innerWidth >> 1 , y: window.innerHeight >> 1}
+      this.elemShape.classList.add('is-hidden');
+    }
+
+    whileMouseDown() {
+      this.elemShape.classList.toggle('is-being-clicked');
+    }
+
+    calcEasing(ex, current, easing) {
+      return ex + (current - ex) * easing;
+    }
+
+    calc() {
+      this.move.x = this.calcEasing(this.exmousePos.x, this.mousePos.x, 0.3);
+      this.move.y = this.calcEasing(this.exmousePos.y, this.mousePos.y, 0.3);
+      this.exmousePos.x = this.move.x;
+      this.exmousePos.y = this.move.y;
+      let distance = {
+        x: Math.abs(this.mousePos.x - this.exmousePos.x),
+        y: Math.abs(this.mousePos.y - this.exmousePos.y),
+      }
+
+      let dist = Math.sqrt(Math.pow(distance.x, 2) + Math.pow(distance.y, 2));
+
+      let baseScale = Math.round(dist / (window.innerWidth / 6) * 100) / 100 + 1;
+      baseScale = Math.min(baseScale, 1.5);
+
+      this.scale = {
+        x: baseScale,
+        y: 1 - Math.abs(1 - baseScale)
+      }
+
+      if (Math.abs(this.mousePos.x - this.move.x) < 0.0005) {
+        this.move.x = this.mousePos.x;
+        this.move.y = this.mousePos.y;
+      }
+
+      // Rotation
+      let distanceCircleToMouse = {
+        x: Math.round((this.mousePos.x - this.move.x) * 100) / 500,
+        y: Math.round((this.mousePos.y - this.move.y) * 100) / 500
+      }
+
+      let radian = Math.atan2(distanceCircleToMouse.y, distanceCircleToMouse.x);
+      this.angle = ~~(radian * (180 / Math.PI));
+    }
+
+    follow() {
+      this.calc();
+      this.elemInner.style.transform = `translate3d( ${this.move.x}px ,${this.move.y}px , 0 )`;
+      this.elemShape.style.transform = `rotate(${this.angle}deg) scale(${this.scale.x} , ${this.scale.y})`;
+    }
+  }
+</script>
+
+<style>
+  :root {
+    --twlo-red: #F22F46;
+    --twlo-blue-90: #030B5D;
+    --twlo-blue-20: #CCE4FF;
+  }
+
+  .atropos-inner {
+    overflow: visible !important;
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+  }
+
+  h1 {
+    display: block;
+    color: var(--twlo-blue-20);
+    font-family: 'Twilio Sans Display';
+    font-size: 120px;
+    font-weight: 900;
+    text-align: center;
+    position: absolute;
+    top: 0;
+    right: -50%;
+    bottom: 0;
+    left: -50%;
+    margin: auto;
+    height: max-content;
+    width: max-content;
+    z-index: 2;
+    pointer-events: none;
+  }
+
+  .magic-venn {
+    position: absolute;
+    width: 400px;
+    height: 400px;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  .magic-venn-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+
+  .magic-venn-circle {
+    width: 250px;
+    height: 250px;
+    border-radius: 100%;
+    border: 10px solid var(--twlo-red);
+    mix-blend-mode: exclusion;
+  }
+
+  .magic-venn-top-left {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  .magic-venn-top-right {
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+
+  .magic-venn-bottom-left {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+  }
+
+  .magic-venn-bottom-right {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+  }
+
+  .dot-grid {
+    height: 800px;
+    width: 600px;
+    background-color: var(--twlo-blue-90);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+
+  .cursor {
+    position: fixed;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: 999999;
+    transform-origin: 50%;
+    transform: translate3d(-50%, -50%, 0);
+    mix-blend-mode: exclusion;
+    background-blend-mode: multiply;
+  }
+
+  .cursor-shape {
+    z-index: 999999;
+    display: block;
+    width: 20px;
+    height: 20px;
+    border-radius: 100%;
+    background-color: var(--twlo-red);
+    transition-property: width, height, background-color;
+    transition-duration: 200ms;
+    transition-timing-function: cubic-bezier(0.75, -1.3, 0.3, 2.3);
+    position: relative;
+  }
+
+  .cursor-shape.is-active {
+    width: 40px;
+    height: 40px;
+  }
+
+  .cursor-shape.is-hidden {
+    transition-timing-function: linear;
+    transition-duration: 100ms;
+    width: 0;
+    height: 0;
+  }
+
+  .cursor-shape.is-being-clicked {}
+</style>

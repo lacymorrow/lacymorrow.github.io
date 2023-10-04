@@ -1,0 +1,30 @@
+.missing-ani-section{
+	@media #{$min_lg}{
+		display: flex;
+		height: 100vh; 
+		overflow: hidden; 
+		.left-content,.right-content{
+			width: 50%;
+			height: 100%;
+			
+		}
+		.right-content{ 
+			background-color:#030B5D; 
+			display: flex;
+			align-items:center; 
+			padding-left: 5vw;
+			padding-right: 5vw;
+		}
+		.left-content{
+			background-color: var(--left-bg);
+			.content-item{
+				height: 100%;
+				width: 100%;
+				display: flex;
+				align-items:center; 
+				padding-left: 5vw; 
+				padding-right: 5vw;
+			}
+		}
+	}
+}

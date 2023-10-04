@@ -1,0 +1,29 @@
+/* -----------------------------------------
+   vcard
+----------------------------------------- */
+@font-face {
+    font-family: 'blanch_capsregular';
+    src: url('../../webfonts/blanch_caps-webfont.eot');
+    src: url('../../webfonts/blanch_caps-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../../webfonts/blanch_caps-webfont.woff') format('woff'),
+         url('../../webfonts/blanch_caps-webfont.ttf') format('truetype'),
+         url('../../webfonts/blanch_caps-webfont.svg#blanch_capsregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+@font-face {
+    font-family: 'telegraficoregular';
+    src: url('../../webfonts/telegrafico.eot');
+    src: url('../../webfonts/telegrafico.eot?#iefix') format('embedded-opentype'),
+         url('../../webfonts/telegrafico.woff') format('woff'),
+         url('../../webfonts/telegrafico.ttf') format('truetype'),
+         url('../../webfonts/telegrafico.svg#telegraficoregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+.clear{ clear: both; }
+h1 a{ color: #000; }
+h1.league{ font-family: 'telegraficoregular', 'Helvetica Neue', Helvetica, sans-serif; font-size: 6em;}

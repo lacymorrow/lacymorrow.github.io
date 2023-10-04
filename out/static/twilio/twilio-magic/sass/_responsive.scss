@@ -1,0 +1,100 @@
+$xl_device : 'only screen and (max-width: 1199.98px)';
+$lg_device : 'only screen and (max-width: 991.98px)';
+$min_lg : 'only screen and (min-width: 992.98px)';
+$md_device:'only screen and (max-width: 767.98px)';
+$sm_device:'(max-width: 575.98px)';
+$sm_mobile: 'only screen and (max-width: 479px)';
+
+
+@media #{$lg_device}{
+.hero-title,.whatis-title,.whatis-title,.value-title {
+	font-size: 50px;
+}
+.hero-sub-title,.value-sub-title {
+	font-size: 17px;
+	line-height: 1.6;
+}
+.section-ctas ,.screen-item.hero-intro-content,.screen-item.hero-whatis-content,.screen-item.first-magic-item,.content-sections-wrapper .right-content,.missing-ani-section.theme.is-blue .content-item{
+	padding-left: 5vw;
+	padding-right: 5vw; 
+}
+.section-ctas , .screen-item.hero-intro-content,.screen-item.hero-whatis-content,.screen-item.first-magic-item,.content-sections-wrapper .right-content,.missing-ani-section.theme.is-blue .content-item{
+	padding-top: 50px;
+	padding-bottom: 50px;
+}
+.hero-link, .hero-link-red,.section-living .content p{
+	font-size: 15px !important;
+}
+.screen-item.hero-intro-content,.screen-item.hero-whatis-content{
+	background-color:#FEF5EE;
+
+}
+.content-sections-wrapper .right-content,.missing-ani-section.theme.is-blue .content-item{
+	background-color: #FEF5EE;
+}
+.missing-ani-section.theme.is-blue .content-item{
+	&:nth-child(2n+1){
+		background-color: #EBF4FF;
+	}
+}
+.missing-ani-section.theme.is-blue .right-content {
+	display: none;
+} 
+.screen-item.hero-whatis-content{
+	background-color: #FEECEC; 
+}
+.screen-item.first-magic-item{
+	background-color: #030B5D;
+}
+.magic-venn {
+	width: 300px !important;
+	height: 300px !important;
+	margin-top: 50px;
+	.magic-venn-circle{
+		border-width:3px; 
+		a{
+			font-size: 15px;
+		}
+	}
+}
+.section-living {
+	min-height: auto;
+	height: auto;
+	padding-top: 50px;
+	padding-bottom: 50px;
+}
+.atropos-magic-venn {
+	margin-bottom: 20px;
+}
+.ctas-title {
+	font-size: 43px;
+	margin-bottom: 10px;
+}
+.section-ctas p {
+	margin-bottom: 49px;
+}
+
+.section-ctas a{
+	display: block; 
+	margin-bottom: 10px;
+}
+.section-ctas {
+	height: auto;
+	min-height: auto;
+}
+.card.has-cursor-effect {
+	padding: 19px 13px;
+}
+
+.card-title {
+	font-size: 16px;
+}
+.card-subtitle {
+	font-size: 13px;
+	line-height: 1.6;
+}
+.slide-up-reveal { 
+	margin-bottom: 0;
+}
+
+}

@@ -1,0 +1,219 @@
+@font-face {
+  font-family: "TwilioSansText-Regular";
+  src: url("../fonts/text/TwilioSansText-Regular.otf") format("opentype");
+  font-weight: 300;
+}
+
+@font-face {
+  font-family: "TwilioSansText-Extrabold";
+  src: url("../fonts/text/TwilioSansText-Extrabold.otf") format("opentype");
+  font-weight: 900;
+}
+
+@font-face {
+  font-family: "TwilioSansDisplay-Regular";
+  src: url("../fonts/display/TwilioSansDisplay-Regular.otf") format("opentype");
+  font-weight: 300;
+}
+
+@font-face {
+  font-family: "TwilioSansDisplay-Extrabold";
+  src: url("../fonts/display/TwilioSansDisplay-Extrabold.otf") format("opentype");
+  font-weight: 900;
+}
+
+:root {
+  --twlo-black: 0, 0, 0;
+  --twlo-white: 255, 255, 255;
+  --twlo-red: 242, 47, 70;
+  --twlo-red-10: 254, 236, 236;
+  --twlo-blue-10: 235, 244, 255;
+  --twlo-blue-30: 153, 205, 255;
+  --twlo-blue-60: 2, 99, 224;
+  --twlo-blue-90: 3, 11, 93;
+  --twlo-blue-100: 6, 3, 58;
+  --twlo-blue-20: 204, 228, 255;
+  --twlo-orange-10: 254, 245, 238;
+  --venn-size: 30vw;
+}
+
+.relative {
+  position: relative;
+}
+
+.absolute {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+  justify-content: center;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'TwilioSansText-Regular', sans-serif;
+  line-height: 1.4;
+  color: black;
+  overflow-x: hidden;
+  position: relative;
+}
+/* 
+main { 
+  overflow: auto;
+  scroll-snap-type: y mandatory;
+  height: 100vh;
+} */
+
+body,
+.bg,
+.bg:before,
+.bg:after {
+  transition: color 500ms, background-color 500ms;
+}
+
+.bg {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgb(var(--twlo-orange-10));
+  z-index: -100;
+}
+
+.bg:before {
+  content: '';
+  width: 50%;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.bg:after {
+  content: '';
+  width: 50%;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+}
+
+.no-scroll {
+  overflow: hidden;
+}
+
+:not(h1) strong {
+  font-family: "TwilioSansText-Extrabold";
+  font-weight: 900;
+}
+
+section {
+  width: 100%;
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  scroll-snap-align: start;
+}
+
+.divider {
+  height: 20vh;
+  width: 100%;
+}
+
+.theme,
+.bg:before,
+.bg:after {
+  transition: background-color 500ms, width 500ms;
+}
+
+.theme .right-text {
+  color: black;
+}
+
+.theme.is-pink .bg:before {
+  background-color: rgb(var(--twlo-red-10));
+}
+
+.theme.is-pink .bg:after {
+  background-color: rgb(var(--twlo-white));
+}
+
+.theme.is-dark {
+  color: white;
+}
+
+.theme.is-dark .bg:before {
+  background-color: rgb(var(--twlo-blue-100)); 
+}
+
+.theme.is-dark .right-text {
+  color: black;
+}
+
+.theme.is-red {
+  color: black;
+}
+
+.theme.is-red .bg:after {
+  background-color: rgb(var(--twlo-red));
+  color: white;
+}
+
+.theme.is-blue {
+  color: black;
+}
+
+.theme.is-blue .bg:before {
+  background: transparent;
+  color: black;
+}
+
+.theme.is-blue .bg:after {
+  background-color: rgb(var(--twlo-blue-100));
+  color: white;
+}
+
+.theme.is-blue .right-text {
+  color: white;
+}
+
+.theme.is-bluer {
+  color: black;
+}
+
+.theme.is-bluer .bg:before {
+  background-color: rgb(var(--twlo-blue-10));
+  color: black;
+}
+
+.theme.is-bluer .bg:after {
+  background-color: rgb(var(--twlo-blue-100));
+  color: white;
+}
+
+.theme.is-bluer .right-text {
+  color: white;
+}
+
+/* .theme.is-dark .divider {
+  transition: background-color 500ms;
+  background-color: rgb(var(--twlo-blue-100));
+}
+
+.theme.is-light .divider {
+  transition: background-color 500ms;
+  background-color: rgb(var(--twlo-orange-10));
+} */
+
+
+

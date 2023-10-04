@@ -1,0 +1,43 @@
+  .cursor {
+    position: fixed;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: 999999;
+    transform-origin: 50%;
+    transform: translate3d(-50%, -50%, 0);
+    /* animation: show 5s ease-in backwards; */
+  }
+
+  .cursor-shape {
+    z-index: 2;
+    display: block;
+    width: 20px;
+    height: 20px;
+    border-radius: 100%;
+    background-color: rgb(var(--twlo-red));
+    transition-property: width, height, background-color;
+    transition-duration: 300ms;
+  }
+  
+  .cursor.is-active {
+    mix-blend-mode: exclusion;
+  }
+  
+  
+  .cursor.is-active .cursor-shape {
+    background-color: white;
+    transition-timing-function: cubic-bezier(0.5, -1, 0.3, 1.8);
+    width: 60px;
+    height: 60px;
+    /* background-color: transparent; */
+    /* border: 2px solid rgb(var(--twlo-red)); */
+    /* opacity: 0.3; */
+  }
+
+  .cursor.is-hidden .cursor-shape {
+    transition-timing-function: linear;
+    transition-duration: 100ms;
+    width: 0;
+    height: 0;
+  }

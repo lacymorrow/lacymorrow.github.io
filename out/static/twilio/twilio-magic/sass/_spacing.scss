@@ -1,0 +1,32 @@
+// PADDING
+.sec-pt-120{
+    padding-top: 120px;
+    @media #{$lg_device}{
+        padding-top: 100px;
+    }
+    @media #{$md_device}{
+        padding-top: 80px;
+    }
+}
+.sec-pb-120{
+    padding-bottom: 120px;
+    @media #{$lg_device}{
+        padding-bottom: 100px;
+    }
+    @media #{$md_device}{
+        padding-bottom: 80px;
+    }
+}
+// MARGIN
+.mb-40{
+    margin-bottom: 40px;
+}
+.mb-40{
+    margin-bottom: 40px;
+}
+.mb-60{
+    margin-bottom: 60px;
+}
+.mb-60{
+    margin-bottom: 60px;
+}

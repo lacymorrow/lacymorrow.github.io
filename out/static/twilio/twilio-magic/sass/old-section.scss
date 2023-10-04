@@ -1,0 +1,75 @@
+.content-sections-wrapper{
+	section{
+		min-height: auto; 
+	}
+	width: 100%;
+	position: relative;
+	z-index: 3;
+	.total-sections{
+		div{
+			height: 100vh; 
+		}
+	}
+	.parent-section,.sections-wrapper{ 
+		position: absolute;
+		left: 0;
+		top: 0;
+		width: 100%;
+		z-index: 50;
+	}
+	.bg-wrapper{ 
+		position: absolute;
+		left: 0;
+		top: 0;
+		pointer-events:none;
+		z-index: -5;
+		height: 100%;
+		.left-bg,.right-bg{
+			height: 100%;
+			width:50%; 
+
+		}
+		.left-bg{
+			background-color: var(--left-bg);
+		}
+		.right-bg{
+			background-color: var(--right-bg); 
+		}
+	}
+	.sec-row,.bg-wrapper{
+		display: flex;
+		align-items:center;
+		flex-wrap: wrap;
+		width: 100%;
+	}
+	.sec-row,.bg-wrapper{ 
+		.left-col,.right-col{
+			width: 50%; 
+			padding-left: 6.944444444444445vw;
+			padding-right: 6.944444444444445vw; 
+			display: flex;
+			flex-wrap: wrap; 
+			align-items:center; 
+		}
+	}
+	.section-50{
+		width: 50%;
+		.left-col,.right-col{
+			width: 100%; 
+		}
+	}
+	.circle-bottom-text{
+		overflow: hidden; 
+	}
+}
+
+.pepole-image{
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	max-width: 100%;
+	margin-top: auto;
+}
+.content-sections-wrapper .sec-row .left-col,.content-sections-wrapper .sec-row .right-col{
+	height: 100vh;
+}

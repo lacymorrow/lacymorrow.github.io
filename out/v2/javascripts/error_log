@@ -1,0 +1,8 @@
+[18-Feb-2014 01:37:57] PHP Fatal error:  Uncaught exception 'Swift_TransportException' with message 'Failed to authenticate on SMTP server with username "me@lacymorrow.com" using 2 possible authenticators' in /home/lacymorr/public_html/javascripts/lib/classes/Swift/Transport/Esmtp/AuthHandler.php:184
+Stack trace:
+#0 /home/lacymorr/public_html/javascripts/lib/classes/Swift/Transport/EsmtpTransport.php(312): Swift_Transport_Esmtp_AuthHandler->afterEhlo(Object(Swift_SmtpTransport))
+#1 /home/lacymorr/public_html/javascripts/lib/classes/Swift/Transport/AbstractSmtpTransport.php(120): Swift_Transport_EsmtpTransport->_doHeloCommand()
+#2 /home/lacymorr/public_html/javascripts/lib/classes/Swift/Mailer.php(80): Swift_Transport_AbstractSmtpTransport->start()
+#3 /home/lacymorr/public_html/javascripts/ajaxmail.php(46): Swift_Mailer->send(Object(Swift_Message))
+#4 {main}
+  thrown in /home/lacymorr/public_html/javascripts/lib/classes/Swift/Transport/Esmtp/AuthHandler.php on line 184
