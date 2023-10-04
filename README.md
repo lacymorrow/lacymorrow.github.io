@@ -1,36 +1,29 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# lacymorrow.github.io
 
-## Getting Started!
+An optimized package and gruntfile for rapidly spooling up a static Bootstrap website.
 
-First, run the development server:
+This is a dead-simple setup for developing static HTML or dynamic PHP websites using Bootstrap, Grunt and Livereload.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+### Getting Started
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Download or clone the repo. Using the terminal, `cd` into the directory and run `npm install` to install Grunt and all of the local dependencies. Next run `grunt build` to update Bootstrap to the latest version and build the initial project with all assets. You only need to run `grunt build` to build project dependencies.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+`grunt` will build the website and output all files to the `dist` directory.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+`grunt serve` will build the website and open the `dist` folder in the browser using the grunt-express plugin. It will watch and persist your session as you make changes and save source files using Livereload.
+ 
+#### Grunt Tasks
 
-## Learn More
+ * Assets have `git pull; npm install; grunt` run to build them and are copied to `dist/assets`.
 
-To learn more about Next.js, take a look at the following resources:
+ * JSHint is run on the gruntfile and `src/js` directory.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+ * All JS is concated into `dist/js/init.js` and minified into `dist/js/init.min.js`.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+ * LESS is compiled into CSS.
 
-## Deploy on Vercel
+ * CSS is concated, prefixed, combed into `dist/css/init.css` then minified to `dist/css/init.css`.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+ * Images in `src/img` are compressed and copied to `dist/img`
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+ * The `src/app` and `src/html` directories are copied to `dist`.
